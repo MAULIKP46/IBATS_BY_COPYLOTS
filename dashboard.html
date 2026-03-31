@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>IBATS Integrated Dashboard</title>
+    <meta http-equiv="refresh" content="5" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f0f4f8, #d9eaf7);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 2em;
+            margin: 0;
+            color: #004080;
+        }
+
+        a.logout {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        a.logout:hover {
+            background-color: #cc0000;
+        }
+
+        .center-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px 20px;
+        }
+
+        .sensor-data {
+            background-color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sensor-data h2 {
+            margin-top: 0;
+            font-size: 1.6em;
+            color: #00529b;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sensor-data ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sensor-data ul li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .no-data {
+            margin-top: 20px;
+            color: #888;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .button-group {
+            margin-top: 30px;
+        }
+
+        .button-group a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .button-group a:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IBATS Integrated Dashboard</h1>
+        <a href="/logout" class="logout">Logout</a>
+    </header>
+
+    <div class="center-wrapper">
+        {% if blynk_volume %}
+            <div class="sensor-data">
+                <h2>Live Data</h2>
+                <ul>
+                    <li><strong>Last Updated Time:</strong> {{ blynk_volume["Timestamp"] }}</li>
+                    <li><strong>Total Volume Consumed (ml):</strong> {{ blynk_volume["TotalVolume(ml)"] }}</li>
+                    <li><strong>Switch 1 On Time (s):</strong> {{ blynk_volume["Switch_1(s)"] }}</li>
+                    <li><strong>Switch 2 On Time (s):</strong> {{ blynk_volume["Switch_2(s)"] }}</li>
+                </ul>
+            </div>
+        {% else %}
+            <p class="no-data">No sensor data available yet.</p>
+        {% endif %}
+
+        <div class="button-group">
+            <a href="https://blynk.cloud/dashboard/527294/global/devices/1/organization/527294/devices/1693095/dashboard" target="_blank" rel="noopener noreferrer">
+                🚀 Click Here For Interactive Dashboard
+            </a>
+        </div>
+    </div>
+</body>
+</html>
