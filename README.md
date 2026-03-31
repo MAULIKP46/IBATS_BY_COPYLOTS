@@ -1,2 +1,1 @@
- IBATS_BY_COPYLOTS
-Integrated Smart Building Automation & Tracking System features an AI automated IOT based cost-effective monitoring & attendance logging system. Implemented Real time tracking & analysis of water and electricity consumption via Blynk Api & Arduino IDE. It provides a mobile interface to control switches & electronic devices. 
+(IBATS_BY_COPYLOTS)Integrated Smart Building Automation & Tracking System features an AI automated IOT based cost-effective monitoring & attendance logging system. Implemented Real time tracking & analysis of water and electricity consumption via Blynk Api & Arduino IDE. It provides a mobile interface to control switches & electronic devices. 
